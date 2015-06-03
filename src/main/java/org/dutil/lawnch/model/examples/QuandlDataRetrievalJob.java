@@ -34,7 +34,7 @@ public class QuandlDataRetrievalJob extends PluginJob<JsonResult> {
 	}
 	
 	@Override
-	public void execute() {		
+	public JsonResult execute() {		
 		Result configuration = configuration();
 		String stockId = configuration.value("stockId");
 		String authToken = configuration.value("OauthToken");
@@ -50,5 +50,7 @@ public class QuandlDataRetrievalJob extends PluginJob<JsonResult> {
 		{
 			e.printStackTrace();
 		}
+		
+		return result();
 	}
 }

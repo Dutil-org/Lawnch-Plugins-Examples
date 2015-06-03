@@ -91,7 +91,7 @@ public class MonteCarloJob extends PluginJob<JsonResult> {
 	}
 	
 	@Override
-	public void execute() {		
+	public JsonResult execute() {		
 		initializePlatform();
 		
 		cl_kernel kernel = createKernel("3rd_party/examples-0.1.0/classes/kernel/MonteCarloKernel.cl");
@@ -99,7 +99,8 @@ public class MonteCarloJob extends PluginJob<JsonResult> {
 		runKernel(kernel);
 		release(kernel);
 		
-		validate();		
+		validate();	
+		return result();
 	}
 	
 	private void initializePlatform()
